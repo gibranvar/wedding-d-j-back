@@ -31,15 +31,22 @@ const getGuests = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getGuests = getGuests;
 const updateGuest = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { name, tickets, telephone, attendance } = req.body;
+        const { name, tickets, telephone, attendance, dietaryRestriction, otherAllergies, arrivalDate, arrivalTime, coupleSong, danielSong, jasmineSong } = req.body;
         const guest = yield guestModel_1.default.findOne({ name });
         if (!guest)
             return res.status(404).json({ message: 'Guest not found' });
-        if (guest.attendance)
+        if (guest.confirmation_date)
             return res.status(400).json({ message: 'Cannot modify, already confirmed' });
         guest.tickets = tickets;
         guest.telephone = telephone;
         guest.attendance = attendance;
+        guest.dietaryRestriction = dietaryRestriction;
+        guest.otherAllergies = otherAllergies;
+        guest.arrivalDate = arrivalDate;
+        guest.arrivalTime = arrivalTime;
+        guest.coupleSong = coupleSong;
+        guest.danielSong = danielSong;
+        guest.jasmineSong = jasmineSong;
         guest.confirmation_date = new Date();
         yield guest.save();
         res.json(guest);

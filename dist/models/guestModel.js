@@ -28,7 +28,14 @@ const GuestSchema = new mongoose_1.Schema({
     name: { type: String, required: true },
     tickets: { type: Number, required: true },
     telephone: { type: String, required: true },
-    attendance: { type: Boolean, default: false },
-    confirmation_date: { type: Date, default: null }
+    attendance: { type: Boolean, default: null },
+    confirmation_date: { type: Date, default: null },
+    dietaryRestriction: { type: String, required: true },
+    otherAllergies: { type: String, default: '' },
+    arrivalDate: { type: Date, required: true },
+    arrivalTime: { type: String, required: true },
+    coupleSong: { type: String, default: '' },
+    danielSong: { type: String, default: '' },
+    jasmineSong: { type: String, default: '' }
 });
 exports.default = mongoose_1.default.model('Guest', GuestSchema);

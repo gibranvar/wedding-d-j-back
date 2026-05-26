@@ -11,7 +11,12 @@ require('dotenv').config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 5000;
 const mongoUri = process.env.DB_URI;
-app.use((0, cors_1.default)());
+app.use((0, cors_1.default)({
+    origin: [
+        "http://localhost:5173",
+        "https://anaygeovanni.netlify.app"
+    ]
+}));
 app.use(express_1.default.json());
 app.use('/api', guestRoutes_1.default);
 mongoose_1.default.connect(mongoUri)

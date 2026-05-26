@@ -12,7 +12,7 @@ const mongoUri: string = process.env.DB_URI!;
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://anaygeovanni.netlify.app"
+    "https://danielandjasmine.netlify.app"
   ]
 }));
 app.use(express.json());
